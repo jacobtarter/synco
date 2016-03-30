@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" href="synco.css">
-</head>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <body>
 
 <div ng-app="myApp" ng-controller="syncoCtrl">
 
 <p style="font-size: 24px"><b>Synco!</b></p>  
-
+ <style>
+ 	body{
+ 		background-color:purple;
+ 	}
+ </style>
 
 <!test comment, testing github>
 
