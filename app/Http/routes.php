@@ -28,7 +28,10 @@ Route::get('/', function () {
 
 
 //authentication routes
-Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::controllers([
+		'auth' => 'Auth/AuthController',
+		'password' => 'Auth/PasswordController',
+]);
 
 Route::group(['middleware' => ['web']], function () {
     //
