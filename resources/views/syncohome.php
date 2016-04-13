@@ -11,7 +11,7 @@
 
 <!test comment, testing github>
 
-{{ Auth::check() ? "Logged In" : "Logged Out" }}
+<!{{ Auth::check() ? "Logged In" : "Logged Out" }}>
 
 
 <table border='1'>
