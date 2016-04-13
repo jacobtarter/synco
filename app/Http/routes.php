@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('posts', 'PostController');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +49,7 @@ Route::get( 'test1', function() {
 Route::get( 'v1/posts', function() {
 	$WHERE= "
 	SELECT p.PID, p.Title, p.PostText, p.UID, p.PCDate, c.CID, c.c_PID, c.CommentText, c.UID, c.CommentDate, v.VID, v.VoteScore, v.v_PID, v.UID, v.Date
-	FROM PostComment p
+	FROM posts p
 	LEFT JOIN Comments c ON p.PID = c.c_PID
 	LEFT JOIN Votes v ON p.PID = v.v_PID;
 	
