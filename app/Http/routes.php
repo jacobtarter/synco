@@ -32,13 +32,12 @@ Route::controllers([
 
 Route::group(['middleware' => ['web']], function () {
 
-Route::auth();
+	#Route::auth();
 
-Route::get('/', function () {
-	return view('welcome');
-});
+	Route::get('/', 'PagesController@getIndex');
+	
 
-Route::get('/home', 'HomeController@index');
+	#Route::get('/home', 'HomeController@index');
 
 });
 
