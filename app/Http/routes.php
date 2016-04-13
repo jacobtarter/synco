@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-   return view('home');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +26,22 @@ Route::get('/', function () {
 
 //authentication routes
 Route::controllers([
-		'auth' => 'Auth/AuthController',
-		'password' => 'Auth/PasswordController',
+		'auth' => 'Auth\AuthController',                       
+		'password' => 'Auth\PasswordController',
 ]);
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+Route::auth();
+
+Route::get('/', function () {
+	return view('welcome');
 });
+
+Route::get('/home', 'HomeController@index');
+
+});
+
 Route::get( 'test1', function() {
 	print "<br /> Hello! from Test1";
 });
@@ -153,6 +159,7 @@ Route::get( 'v1/posts', function() {
 }		
 );
 	
+
 
 
 
