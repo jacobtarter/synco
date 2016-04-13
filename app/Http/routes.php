@@ -27,19 +27,21 @@ Route::resource('posts', 'PostController');
 
 
 //authentication routes
-Route::controllers([
-		'auth' => 'Auth\AuthController',                       
-		'password' => 'Auth\PasswordController',
-]);
+//Route::controllers([
+//		'auth' => 'Auth\AuthController',                       
+//		'password' => 'Auth\PasswordController',
+//]);
 
 Route::group(['middleware' => ['web']], function () {
 
-	#Route::auth();
-
+	Route::get('auth/login', 'Auth\AuthController@getLogin');
+	Route::post('auth/login', 'Auth\AuthController@postLogin');
+	Route::get('auth/logout', 'Auth\AuthController@getLogout');
+	Route::get('auth/register', 'Auth\AuthController@getRegister');
+	Route::post('auth/register', 'Auth\AuthController@postRegister');
 	Route::get('/', 'PagesController@getIndex');
 	
 
-	#Route::get('/home', 'HomeController@index');
 
 });
 
@@ -48,7 +50,7 @@ Route::get( 'test1', function() {
 });
 Route::get( 'v1/posts', function() {
 	$WHERE= "
-	SELECT p.PID, p.Title, p.PostText, p.UID, p.PCDate, c.CID, c.c_PID, c.CommentText, c.UID, c.CommentDate, v.VID, v.VoteScore, v.v_PID, v.UID, v.Date
+	SELECT p.PID, p.Title, p.PostText, p.UID, p.created_at, c.CID, c.c_PID, c.CommentText, c.UID, c.CommentDate, v.VID, v.VoteScore, v.v_PID, v.UID, v.Date
 	FROM posts p
 	LEFT JOIN Comments c ON p.PID = c.c_PID
 	LEFT JOIN Votes v ON p.PID = v.v_PID;
@@ -104,7 +106,7 @@ Route::get( 'v1/posts', function() {
 		$current['title'] = $row->Title;
 		$current['posttext'] = $row->PostText;
 		$current['uid'] = $row->UID;
-		$current['postdate'] = $row->PCDate;
+		$current['created_at'] = $row->created_at;
 
 		$previousID = $current['pid'];
 

@@ -40,15 +40,15 @@ class PostController extends Controller
     {
         // validate data
         $this->validate($request, array(
-                'title' -> 'required|max:249',
-                'posttext' -> 'required'
+                'title' => 'required|max:249',
+                'posttext' => 'required'
             ));
         // store in database
         $post = new Post;
         $post->title = $request->title;
         $post->posttext = $request->posttext;
         $post->save();
-        return redirect()->route('/');
+        return view('syncohome');    
     }
 
     /**
