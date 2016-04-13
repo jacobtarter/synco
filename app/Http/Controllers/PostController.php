@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Post;
+
 class PostController extends Controller
 {
     /**
@@ -36,7 +38,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate data
+        $this->validate($request, array(
+                'title' -> 'required|max:249',
+                'posttext' -> 'required'
+            ));
+        // store in database
+        $post = new Post;
+        $post->title = $request->title;
+        $post->posttext = $request->posttext;
+        $post->save();
+        return redirect()->route('/');
     }
 
     /**
