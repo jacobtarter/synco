@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('auth/logout', 'Auth\AuthController@getLogout');
 	Route::get('auth/register', 'Auth\AuthController@getRegister');
 	Route::post('auth/register', 'Auth\AuthController@postRegister');
-	Route::get('/', ['as => 'home', 'uses' => 'PagesController@getIndex']);
+	Route::get('/', ['as' => 'home', 'uses' => 'PagesController@getIndex']);
 	
 
 
