@@ -1,0 +1,1 @@
+{{ Auth::check() ? "Logged In" : "Logged Out" }}

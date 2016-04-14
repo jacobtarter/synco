@@ -8,6 +8,10 @@ class PagesController extends Controller {
 		return view('syncohome');
 	}
 
+	public function getLoggedIn() {
+		return view('loggedin');
+	}
+
 
 
 }
