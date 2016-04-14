@@ -166,3 +166,7 @@ Route::get( 'v1/posts', function() {
 
 
 
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
