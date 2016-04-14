@@ -52,7 +52,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->posttext = $request->posttext;
         $post->save();
-        return view('syncohome');    
+        return redirect()->route('post.show');    
     }
 
     /**
