@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -5,6 +6,14 @@
 <body>
 
 <p style="font-size: 24px"><b>Post New Comment!</b></p>
+<script>
+$user = Auth::user();
+if($user)
+{
+document.getElementById("login").innerHTML = "Hello $user->name";
+}
+</script>
+<p id="login"></p>
 {!! Form::open(array('route' => 'posts.store')) !!}
     {{ Form::label('title', 'Title: ') }}
     {{ Form::text('title', null) }}
